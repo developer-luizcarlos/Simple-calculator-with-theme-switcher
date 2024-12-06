@@ -12,10 +12,6 @@ html {
   height: 100dvh;
 }
 
-body {
-  font-family: "League Spartan", sans-serif;
-}
-
 :root {
   --bg-color: hsl(222, 26%, 31%);
   --bg-toggle-area: hsl(223, 31%, 20%);
@@ -94,4 +90,108 @@ body.theme3 {
 
   --color-number-key: hsl(52, 100%, 62%);
   --color-operational-key: hsl(198, 20%, 13%);
+}
+
+body {
+  background-color: var(--bg-color);
+  display: grid;
+  place-items: center;
+  font-family: "League Spartan", sans-serif;
+}
+
+#calc {
+  width: 480px;
+}
+
+#calc-header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+#calc-header-title-area {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--color-operational-key);
+}
+
+#calc-theme-switcher-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+
+  & h4 {
+    text-transform: uppercase;
+  }
+}
+
+#calc-theme-switcher-area {
+  width: 75px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+#calc-theme-switcher-labels,
+#calc-theme-switcher {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+#calc-theme-switcher {
+  height: 20px;
+  background-color: var(--bg-toggle-area);
+  border-radius: 10px;
+  position: relative;
+}
+
+#toggle-theme-ball {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: var(--bg-toggle);
+  width: 20px;
+  height: 100%;
+  border-radius: 50%;
+  transform: scale(.7);
+  transition: all .2s ease-in;
+}
+
+#radio-theme2:checked~#toggle-theme-ball {
+  left: 36%;
+}
+
+#radio-theme3:checked~#toggle-theme-ball {
+  left: 73%;
+}
+
+.radio-theme-select {
+  width: 100%;
+  opacity: 0;
+}
+
+#cal-screen {
+  height: 100px;
+  background-color: var(--bg-screen-visor);
+  border-radius: 4px;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  padding: 20px;
+  overflow: hidden;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-operational-key);
+  text-wrap: nowrap;
+  text-overflow: ellipsis;
 }
