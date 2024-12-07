@@ -8,6 +8,7 @@ const btnNumberKeys = Array.from(document.querySelectorAll(".calc-btn-number"));
 const btnOperationalKeys = Array.from(
   document.querySelectorAll(".calc-btn-operation")
 );
+const calcButtonResult = document.querySelector(".calc-btn-result");
 
 // Functions
 const changeBodyClass = (nameClass) => {
@@ -24,7 +25,25 @@ const addValuesToCalcScreen = (valueProperty, allowSpecialChars) => {
     calcScreenInitialValue === 0
       ? valueProperty
       : (calcScreen.textContent += valueProperty);
+
   allowSpecialKeysOnCalcScreen = allowSpecialChars;
+  if (!allowSpecialChars) {
+    calcButtonResult.setAttribute("disabled", "disabled");
+  } else {
+    calcButtonResult.removeAttribute("disabled", "disabled");
+  }
+};
+
+const calculateTheResult = () => {
+  let calcScreen = document.querySelector("#calc-screen");
+  const convertedCalcScreenValue = Number(calcScreen.textContent);
+
+  const expressionValidToCalc = convertedCalcScreenValue !== 0;
+
+  if (expressionValidToCalc) {
+    const result = eval(calcScreen.textContent);
+    calcScreen.textContent = result;
+  }
 };
 
 // Global variables
@@ -61,3 +80,5 @@ btnOperationalKeys.map((operationKey) => {
     }
   });
 });
+
+calcButtonResult.addEventListener("click", calculateTheResult);
