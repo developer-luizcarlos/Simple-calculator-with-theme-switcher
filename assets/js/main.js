@@ -1,5 +1,8 @@
 "use strict";
 
+// Global variables and startup configurations
+let allowSpecialKeysOnCalcScreen = true;
+
 // DOM elements
 const radiosToggleTheme = Array.from(
   document.querySelectorAll(".radio-theme-select")
@@ -14,13 +17,13 @@ const calcButtonDelete = document.querySelector(".calc-btn-delete");
 const calcButtonReset = document.querySelector(".calc-btn-reset");
 
 // Functions
-const changeBodyClass = (nameClass) => {
+function changeBodyClass(nameClass) {
   const body = document.body;
 
   body.setAttribute("class", nameClass);
-};
+}
 
-const addNumberValuesToScreen = (value) => {
+function addNumberValuesToScreen(value) {
   let ScreenValue = calcScreen.textContent;
   let calcScreenInitialValue = Number(calcScreen.textContent);
 
@@ -28,9 +31,9 @@ const addNumberValuesToScreen = (value) => {
     calcScreenInitialValue === 0 ? value : ScreenValue + value;
   allowSpecialKeysOnCalcScreen = true;
   isBtnResultDisabled(false);
-};
+}
 
-const addSpecialCharsToScreen = (value) => {
+function addSpecialCharsToScreen(value) {
   if (allowSpecialKeysOnCalcScreen) {
     calcScreen.textContent =
       Number(calcScreen.textContent) === 0
@@ -39,17 +42,17 @@ const addSpecialCharsToScreen = (value) => {
     allowSpecialKeysOnCalcScreen = false;
     isBtnResultDisabled(true);
   }
-};
+}
 
-const isBtnResultDisabled = (state) => {
+function isBtnResultDisabled(state) {
   if (state) {
     calcButtonResult.setAttribute("disabled", "disabled");
   } else {
     calcButtonResult.removeAttribute("disabled", "disabled");
   }
-};
+}
 
-const calculateTheResult = () => {
+function calculateTheResult() {
   const convertedCalcScreenValue = Number(calcScreen.textContent);
 
   const expressionValidToCalc = convertedCalcScreenValue !== 0;
@@ -66,9 +69,9 @@ const calculateTheResult = () => {
       calcScreen.textContent = result;
     }
   }
-};
+}
 
-const deleteValueFromCalcScreen = () => {
+function deleteValueFromCalcScreen() {
   let currentScreenValue = calcScreen.textContent;
   let slicedScreenValue = currentScreenValue.slice(
     0,
@@ -82,6 +85,7 @@ const deleteValueFromCalcScreen = () => {
     calcScreen.textContent = slicedScreenValue;
     if (lastCharIsSpecialChar) {
       allowSpecialKeysOnCalcScreen = true;
+      isBtnResultDisabled(false);
     } else {
       allowSpecialKeysOnCalcScreen = false;
     }
@@ -91,15 +95,13 @@ const deleteValueFromCalcScreen = () => {
   }
   calcScreen.textContent =
     slicedScreenValue.length > 0 ? slicedScreenValue : "0";
-};
+}
 
-const resetCalcScreenValues = () => {
+function resetCalcScreenValues() {
   calcScreen.textContent = "0";
   allowSpecialKeysOnCalcScreen = true;
-};
-
-// Global variables
-let allowSpecialKeysOnCalcScreen = true;
+  isBtnResultDisabled(false);
+}
 
 radiosToggleTheme.map((radio) => {
   radio.addEventListener("click", () => {
@@ -118,6 +120,8 @@ radiosToggleTheme.map((radio) => {
     }
   });
 });
+
+// Other functionalities
 
 btnNumberKeys.map((numberKey) => {
   numberKey.addEventListener("click", () =>
