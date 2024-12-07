@@ -9,6 +9,7 @@ const btnOperationalKeys = Array.from(
   document.querySelectorAll(".calc-btn-operation")
 );
 const calcButtonResult = document.querySelector(".calc-btn-result");
+const calcButtonDelete = document.querySelector(".calc-btn-delete");
 
 // Functions
 const changeBodyClass = (nameClass) => {
@@ -28,6 +29,14 @@ const addValuesToCalcScreen = (valueProperty, allowSpecialChars) => {
 
   allowSpecialKeysOnCalcScreen = allowSpecialChars;
   if (!allowSpecialChars) {
+    isBtnResultDisabled(true);
+  } else {
+    isBtnResultDisabled(false);
+  }
+};
+
+const isBtnResultDisabled = (state) => {
+  if (state) {
     calcButtonResult.setAttribute("disabled", "disabled");
   } else {
     calcButtonResult.removeAttribute("disabled", "disabled");
@@ -43,6 +52,30 @@ const calculateTheResult = () => {
   if (expressionValidToCalc) {
     const result = eval(calcScreen.textContent);
     calcScreen.textContent = result;
+  }
+};
+
+const deleteValueFromCalcScreen = () => {
+  let calcScreen = document.querySelector("#calc-screen");
+
+  let newCalcScreenValue = calcScreen.textContent.slice(
+    0,
+    calcScreen.textContent.length - 1
+  );
+
+  calcScreen.textContent = newCalcScreenValue;
+
+  let specialCharsNotAllowed = ["*", "/", "+", "-", "."];
+  let disallowCalcResult = specialCharsNotAllowed.includes(
+    calcScreen.textContent.at(calcScreen.textContent.length - 1)
+  );
+
+  if (disallowCalcResult) {
+    isBtnResultDisabled(true);
+    allowSpecialKeysOnCalcScreen = false;
+  } else {
+    isBtnResultDisabled(false);
+    allowSpecialKeysOnCalcScreen = true;
   }
 };
 
@@ -82,3 +115,5 @@ btnOperationalKeys.map((operationKey) => {
 });
 
 calcButtonResult.addEventListener("click", calculateTheResult);
+
+calcButtonDelete.addEventListener("click", deleteValueFromCalcScreen);
