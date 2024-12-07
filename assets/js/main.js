@@ -63,20 +63,18 @@ const deleteValueFromCalcScreen = () => {
     calcScreen.textContent.length - 1
   );
 
-  calcScreen.textContent = newCalcScreenValue;
+  if (calcScreen.textContent.length <= 1) {
+    calcScreen.textContent = "0";
+    allowSpecialKeysOnCalcScreen = false;
+  } else {
+    calcScreen.textContent = newCalcScreenValue;
+    allowSpecialKeysOnCalcScreen = true;
+  }
 
   let specialCharsNotAllowed = ["*", "/", "+", "-", "."];
   let disallowCalcResult = specialCharsNotAllowed.includes(
     calcScreen.textContent.at(calcScreen.textContent.length - 1)
   );
-
-  if (disallowCalcResult) {
-    isBtnResultDisabled(true);
-    allowSpecialKeysOnCalcScreen = false;
-  } else {
-    isBtnResultDisabled(false);
-    allowSpecialKeysOnCalcScreen = true;
-  }
 };
 
 // Global variables
