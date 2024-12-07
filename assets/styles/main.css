@@ -17,11 +17,12 @@ html {
   --bg-toggle-area: hsl(223, 31%, 20%);
   --bg-screen-visor: hsl(224, 36%, 15%);
 
-  --bg-number-keys: hsl(28, 16%, 65%);
+  --bg-number-keys: hsl(31, 48%, 87%);
   --bg-number-keys-hover: hsl(30, 25%, 89%);
   --bg-operational-key: hsl(225, 21%, 49%);
   --bg-key-area: hsl(223, 31%, 20%);
   --bg-result-key: hsl(6, 63%, 50%);
+  --bg-result-hover: hsla(6, 95%, 37%, 0.884);
   --bg-toggle: hsl(6, 63%, 50%);
 
   --shadow-number-key: hsl(224, 28%, 35%);
@@ -30,6 +31,7 @@ html {
 
   --color-number-key: hsl(221, 14%, 31%);
   --color-operational-key: hsl(0, 0%, 100%);
+  --color-cal: hsl(0, 0%, 100%);
 }
 
 body.theme1 {
@@ -42,6 +44,7 @@ body.theme1 {
   --bg-operational-key: hsl(225, 21%, 49%);
   --bg-key-area: hsl(223, 31%, 20%);
   --bg-result-key: hsl(6, 63%, 50%);
+  --bg-result-hover: hsla(6, 95%, 37%, 0.884);
   --bg-toggle: hsl(6, 63%, 50%);
 
   --shadow-number-key: hsl(224, 28%, 35%);
@@ -50,6 +53,7 @@ body.theme1 {
 
   --color-number-key: hsl(221, 14%, 31%);
   --color-operational-key: hsl(0, 0%, 100%);
+  --color-cal: hsl(0, 0%, 100%);
 }
 
 body.theme2 {
@@ -62,14 +66,16 @@ body.theme2 {
   --bg-operational-key: hsl(185, 42%, 37%);
   --bg-key-area: hsl(0, 5%, 81%);
   --bg-result-key: hsl(25, 98%, 40%);
+  --bg-result-hover: hsl(25, 89%, 38%);
   --bg-toggle: hsl(25, 98%, 40%);
 
   --shadow-number-key: hsl(35, 11%, 61%);
-  --shadow-result-key: hsl(25, 99%, 27%);
+  --shadow-result-key: hsla(25, 99%, 27%, 0.699);
   --shadow-operational-key: hsl(185, 58%, 25%);
 
   --color-number-key: hsl(60, 10%, 19%);
   --color-operational-key: hsl(0, 0%, 100%);
+  --color-cal: hsl(60, 10%, 19%);
 }
 
 body.theme3 {
@@ -78,10 +84,11 @@ body.theme3 {
   --bg-screen-visor: hsl(268, 71%, 12%);
 
   --bg-number-keys: hsl(268, 47%, 21%);
-  --bg-number-keys-hover: hsl(30, 25%, 89%);
+  --bg-number-keys-hover: hsl(268, 67%, 41%);
   --bg-operational-key: hsl(281, 89%, 26%);
   --bg-key-area: hsl(268, 71%, 12%);
   --bg-result-key: hsl(176, 100%, 44%);
+  --bg-result-hover: hsla(176, 87%, 41%, 0.568);
   --bg-toggle: hsl(176, 100%, 44%);
 
   --shadow-number-key: hsl(290, 70%, 36%);
@@ -89,7 +96,9 @@ body.theme3 {
   --shadow-operational-key: hsl(285, 91%, 52%);
 
   --color-number-key: hsl(52, 100%, 62%);
-  --color-operational-key: hsl(198, 20%, 13%);
+  --color-operational-key: hsl(0, 0%, 100%);
+  ;
+  --color-cal: hsl(52, 100%, 62%);
 }
 
 body {
@@ -117,7 +126,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: var(--color-operational-key);
+  color: var(--color-cal);
 }
 
 #calc-theme-switcher-body {
@@ -159,13 +168,17 @@ body {
 #toggle-theme-ball {
   position: absolute;
   top: 0;
-  left: 0;
+  left: 2%;
   background-color: var(--bg-toggle);
   width: 20px;
   height: 100%;
   border-radius: 50%;
   transform: scale(.7);
   transition: all .2s ease-in;
+}
+
+#radio-theme1:checked~#toggle-theme-ball {
+  left: 2%;
 }
 
 #radio-theme2:checked~#toggle-theme-ball {
@@ -194,7 +207,7 @@ body {
   overflow: hidden;
   font-size: 2rem;
   font-weight: 700;
-  color: var(--color-operational-key);
+  color: var(--color-cal);
   text-wrap: nowrap;
   text-overflow: ellipsis;
 }
@@ -254,7 +267,7 @@ body {
 }
 
 .calc-btn-result:disabled {
-  background-color: rgba(185, 10, 10, 0.836);
+  background-color: var(--bg-result-hover);
   transition: background-color .1s ease-in;
   cursor: not-allowed;
 }
