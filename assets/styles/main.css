@@ -307,7 +307,9 @@ body {
   background-color: var(--bg-key-area);
   padding: 5px;
   border-radius: 4px;
+
   font-size: .90rem;
+  font-weight: 600;
   color: var(--color-calc);
 }
 
