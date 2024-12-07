@@ -4,6 +4,10 @@
 const radiosToggleTheme = Array.from(
   document.querySelectorAll(".radio-theme-select")
 );
+const btnNumberKeys = Array.from(document.querySelectorAll(".calc-btn-number"));
+const btnOperationalKeys = Array.from(
+  document.querySelectorAll(".calc-btn-operation")
+);
 
 // Functions
 const changeBodyClass = (nameClass) => {
@@ -11,6 +15,20 @@ const changeBodyClass = (nameClass) => {
 
   body.setAttribute("class", nameClass);
 };
+
+const addValuesToCalcScreen = (valueProperty, allowSpecialChars) => {
+  const calcScreen = document.querySelector("#calc-screen");
+  const calcScreenInitialValue = Number(calcScreen.textContent);
+
+  calcScreen.textContent =
+    calcScreenInitialValue === 0
+      ? valueProperty
+      : (calcScreen.textContent += valueProperty);
+  allowSpecialKeysOnCalcScreen = allowSpecialChars;
+};
+
+// Global variables
+let allowSpecialKeysOnCalcScreen = false;
 
 radiosToggleTheme.map((radio) => {
   radio.addEventListener("click", () => {
@@ -26,6 +44,20 @@ radiosToggleTheme.map((radio) => {
       case "radio-theme3":
         changeBodyClass("theme3");
         break;
+    }
+  });
+});
+
+btnNumberKeys.map((numberKey) => {
+  numberKey.addEventListener("click", () => {
+    addValuesToCalcScreen(numberKey.value, true);
+  });
+});
+
+btnOperationalKeys.map((operationKey) => {
+  operationKey.addEventListener("click", () => {
+    if (allowSpecialKeysOnCalcScreen) {
+      addValuesToCalcScreen(operationKey.value, false);
     }
   });
 });

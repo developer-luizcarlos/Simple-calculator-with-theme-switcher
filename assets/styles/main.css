@@ -178,7 +178,7 @@ body {
   opacity: 0;
 }
 
-#cal-screen {
+#calc-screen {
   height: 100px;
   background-color: var(--bg-screen-visor);
   border-radius: 4px;
