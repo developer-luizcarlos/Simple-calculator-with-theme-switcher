@@ -56,7 +56,15 @@ const calculateTheResult = () => {
 
   if (expressionValidToCalc) {
     const result = eval(calcScreen.textContent);
-    calcScreen.textContent = result;
+    const resultIsNan = isNaN(result);
+
+    if (resultIsNan) {
+      calcScreen.textContent = "0";
+      allowSpecialKeysOnCalcScreen = true;
+      alert("It's impossible to calculate this expression");
+    } else {
+      calcScreen.textContent = result;
+    }
   }
 };
 
