@@ -11,6 +11,7 @@ const btnOperationalKeys = Array.from(
 );
 const calcButtonResult = document.querySelector(".calc-btn-result");
 const calcButtonDelete = document.querySelector(".calc-btn-delete");
+const calcButtonReset = document.querySelector(".calc-btn-reset");
 
 // Functions
 const changeBodyClass = (nameClass) => {
@@ -84,6 +85,11 @@ const deleteValueFromCalcScreen = () => {
     slicedScreenValue.length > 0 ? slicedScreenValue : "0";
 };
 
+const resetCalcScreenValues = () => {
+  calcScreen.textContent = "0";
+  allowSpecialKeysOnCalcScreen = true;
+};
+
 // Global variables
 let allowSpecialKeysOnCalcScreen = true;
 
@@ -120,3 +126,5 @@ btnOperationalKeys.map((operationKey) => {
 calcButtonResult.addEventListener("click", calculateTheResult);
 
 calcButtonDelete.addEventListener("click", deleteValueFromCalcScreen);
+
+calcButtonReset.addEventListener("click", resetCalcScreenValues);
