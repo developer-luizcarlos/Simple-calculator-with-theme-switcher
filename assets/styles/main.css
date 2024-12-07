@@ -100,7 +100,10 @@ body {
 }
 
 #calc {
+  opacity: 0;
   width: 420px;
+  transform: translateX(-20px);
+  animation: slide-when-is-showed .3s ease-in-out forwards;
 }
 
 #calc-header {
@@ -254,4 +257,11 @@ body {
   background-color: rgba(185, 10, 10, 0.836);
   transition: background-color .1s ease-in;
   cursor: not-allowed;
+}
+
+@keyframes slide-when-is-showed {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
