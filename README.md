@@ -1,4 +1,4 @@
-# Simple calculator built using HTML, Css and Javascript
+# Simple calculator built using HTML, CSS and Javascript
 
 ![Screenshot of calculator with first theme](./assets/screenshots/theme1-screenshot.png)
 
