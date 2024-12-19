@@ -1,139 +1,128 @@
 @import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap');
 
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 body,
 html {
-  width: 100dvw;
   height: 100dvh;
+  width: 100dvw;
 }
 
 :root {
   --bg-color: hsl(222, 26%, 31%);
-  --bg-toggle-area: hsl(223, 31%, 20%);
-  --bg-screen-visor: hsl(224, 36%, 15%);
-
+  --bg-key-area: hsl(223, 31%, 20%);
   --bg-number-keys: hsl(31, 48%, 87%);
   --bg-number-keys-hover: hsl(30, 25%, 89%);
   --bg-operational-key: hsl(225, 21%, 49%);
-  --bg-key-area: hsl(223, 31%, 20%);
-  --bg-result-key: hsl(6, 63%, 50%);
   --bg-result-hover: hsla(6, 95%, 37%, 0.884);
+  --bg-result-key: hsl(6, 63%, 50%);
+  --bg-screen-visor: hsl(224, 36%, 15%);
   --bg-toggle: hsl(6, 63%, 50%);
-
-  --shadow-number-key: hsl(224, 28%, 35%);
-  --shadow-result-key: hsl(6, 70%, 34%);
-  --shadow-operational-key: hsl(224, 28%, 35%);
-
+  --bg-toggle-area: hsl(223, 31%, 20%);
+  --color-calc: hsl(0, 0%, 100%);
   --color-number-key: hsl(221, 14%, 31%);
   --color-operational-key: hsl(0, 0%, 100%);
-  --color-calc: hsl(0, 0%, 100%);
+  --shadow-number-key: hsl(224, 28%, 35%);
+  --shadow-operational-key: hsl(224, 28%, 35%);
+  --shadow-result-key: hsl(6, 70%, 34%);
 }
 
 body.theme1 {
   --bg-color: hsl(222, 26%, 31%);
-  --bg-toggle-area: hsl(223, 31%, 20%);
-  --bg-screen-visor: hsl(224, 36%, 15%);
-
+  --bg-key-area: hsl(223, 31%, 20%);
   --bg-number-keys: hsl(31, 48%, 87%);
   --bg-number-keys-hover: hsl(30, 25%, 89%);
   --bg-operational-key: hsl(225, 21%, 49%);
-  --bg-key-area: hsl(223, 31%, 20%);
-  --bg-result-key: hsl(6, 63%, 50%);
   --bg-result-hover: hsla(6, 95%, 37%, 0.884);
+  --bg-result-key: hsl(6, 63%, 50%);
+  --bg-screen-visor: hsl(224, 36%, 15%);
   --bg-toggle: hsl(6, 63%, 50%);
-
-  --shadow-number-key: hsl(224, 28%, 35%);
-  --shadow-result-key: hsl(6, 70%, 34%);
-  --shadow-operational-key: hsl(224, 28%, 35%);
-
+  --bg-toggle-area: hsl(223, 31%, 20%);
+  --color-calc: hsl(0, 0%, 100%);
   --color-number-key: hsl(221, 14%, 31%);
   --color-operational-key: hsl(0, 0%, 100%);
-  --color-calc: hsl(0, 0%, 100%);
+  --shadow-number-key: hsl(224, 28%, 35%);
+  --shadow-operational-key: hsl(224, 28%, 35%);
+  --shadow-result-key: hsl(6, 70%, 34%);
 }
 
 body.theme2 {
   --bg-color: hsl(0, 0%, 90%);
-  --bg-toggle-area: hsl(0, 5%, 81%);
-  --bg-screen-visor: hsl(0, 0%, 93%);
-
+  --bg-key-area: hsl(0, 5%, 81%);
   --bg-number-keys: hsl(45, 7%, 89%);
   --bg-number-keys-hover: hsl(30, 25%, 89%);
   --bg-operational-key: hsl(185, 42%, 37%);
-  --bg-key-area: hsl(0, 5%, 81%);
-  --bg-result-key: hsl(25, 98%, 40%);
   --bg-result-hover: hsl(25, 89%, 38%);
+  --bg-result-key: hsl(25, 98%, 40%);
+  --bg-screen-visor: hsl(0, 0%, 93%);
   --bg-toggle: hsl(25, 98%, 40%);
-
-  --shadow-number-key: hsl(35, 11%, 61%);
-  --shadow-result-key: hsla(25, 99%, 27%, 0.699);
-  --shadow-operational-key: hsl(185, 58%, 25%);
-
+  --bg-toggle-area: hsl(0, 5%, 81%);
+  --color-calc: hsl(60, 10%, 19%);
   --color-number-key: hsl(60, 10%, 19%);
   --color-operational-key: hsl(0, 0%, 100%);
-  --color-calc: hsl(60, 10%, 19%);
+  --shadow-number-key: hsl(35, 11%, 61%);
+  --shadow-operational-key: hsl(185, 58%, 25%);
+  --shadow-result-key: hsla(25, 99%, 27%, 0.699);
 }
 
 body.theme3 {
   --bg-color: hsl(268, 75%, 9%);
-  --bg-toggle-area: hsl(268, 71%, 12%);
-  --bg-screen-visor: hsl(268, 71%, 12%);
-
+  --bg-key-area: hsl(268, 71%, 12%);
   --bg-number-keys: hsl(268, 47%, 21%);
   --bg-number-keys-hover: hsl(268, 67%, 41%);
   --bg-operational-key: hsl(281, 89%, 26%);
-  --bg-key-area: hsl(268, 71%, 12%);
-  --bg-result-key: hsl(176, 100%, 44%);
   --bg-result-hover: hsla(176, 87%, 41%, 0.568);
+  --bg-result-key: hsl(176, 100%, 44%);
+  --bg-screen-visor: hsl(268, 71%, 12%);
   --bg-toggle: hsl(176, 100%, 44%);
-
-  --shadow-number-key: hsl(290, 70%, 36%);
-  --shadow-result-key: hsl(176, 100%, 44%);
-  --shadow-operational-key: hsl(285, 91%, 52%);
-
+  --bg-toggle-area: hsl(268, 71%, 12%);
+  --color-calc: hsl(52, 100%, 62%);
   --color-number-key: hsl(52, 100%, 62%);
   --color-operational-key: hsl(0, 0%, 100%);
+  --shadow-number-key: hsl(290, 70%, 36%);
+  --shadow-operational-key: hsl(285, 91%, 52%);
+  --shadow-result-key: hsl(176, 100%, 44%);
+
   ;
-  --color-calc: hsl(52, 100%, 62%);
 }
 
 body {
   background-color: var(--bg-color);
   display: grid;
-  place-items: center;
   font-family: "League Spartan", sans-serif;
+  place-items: center;
 }
 
 #calc {
-  opacity: 0;
-  width: 420px;
-  transform: translateX(-20px);
   animation: slide-when-is-showed .3s ease-in-out forwards;
+  opacity: 0;
+  transform: translateX(-20px);
+  width: 420px;
 }
 
 #calc-header {
-  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 12px;
+  width: 100%;
 }
 
 #calc-header-title-area {
-  display: flex;
   align-items: center;
-  justify-content: space-between;
   color: var(--color-calc);
+  display: flex;
+  justify-content: space-between;
 }
 
 #calc-theme-switcher-body {
-  display: flex;
   align-items: center;
-  justify-content: center;
+  display: flex;
   gap: 25px;
+  justify-content: center;
 
   & h4 {
     text-transform: uppercase;
@@ -141,40 +130,39 @@ body {
 }
 
 #calc-theme-switcher-area {
-  width: 75px;
   display: flex;
   flex-direction: column;
   gap: 4px;
+  width: 75px;
 }
 
 #calc-theme-switcher-labels,
 #calc-theme-switcher {
-  width: 100%;
-  display: flex;
   align-items: center;
-  justify-content: space-between;
-
+  display: flex;
   font-size: 1.1rem;
   font-weight: 600;
+  justify-content: space-between;
+  width: 100%;
 }
 
 #calc-theme-switcher {
-  height: 20px;
   background-color: var(--bg-toggle-area);
   border-radius: 10px;
+  height: 20px;
   position: relative;
 }
 
 #toggle-theme-ball {
+  background-color: var(--bg-toggle);
+  border-radius: 50%;
+  height: 100%;
+  left: 2%;
   position: absolute;
   top: 0;
-  left: 2%;
-  background-color: var(--bg-toggle);
-  width: 20px;
-  height: 100%;
-  border-radius: 50%;
   transform: scale(.7);
   transition: all .2s ease-in;
+  width: 20px;
 }
 
 #radio-theme1:checked~#toggle-theme-ball {
@@ -190,63 +178,59 @@ body {
 }
 
 .radio-theme-select {
-  width: 100%;
   opacity: 0;
+  width: 100%;
 }
 
 #calc-screen {
-  height: 100px;
+  align-items: center;
   background-color: var(--bg-screen-visor);
   border-radius: 4px;
-
+  color: var(--color-calc);
   display: flex;
-  align-items: center;
-  justify-content: flex-end;
-
-  padding: 20px;
-  overflow: hidden;
   font-size: 2rem;
   font-weight: 700;
-  color: var(--color-calc);
-  text-wrap: nowrap;
+  height: 100px;
+  justify-content: flex-end;
+  overflow: hidden;
+  padding: 20px;
   text-overflow: ellipsis;
+  text-wrap: nowrap;
 }
 
 #calc-btn-area {
   background-color: var(--bg-key-area);
-  padding: 10px;
-  margin-top: 20px;
   border-radius: 4px;
-
+  column-gap: 8px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  column-gap: 8px;
+  margin-top: 20px;
+  padding: 10px;
   row-gap: 12px;
 }
 
 .calc-btn {
-  width: 100%;
-  height: 40px;
-  border-radius: 4px;
   border: none;
-
+  border-radius: 4px;
+  cursor: pointer;
   font-size: 1.2rem;
   font-weight: 700;
+  height: 40px;
   text-transform: uppercase;
-  cursor: pointer;
+  width: 100%;
 }
 
 .calc-btn-fill-empty-space {
-  grid-column: 1 / -1;
   display: flex;
   gap: 10px;
+  grid-column: 1 / -1;
 }
 
 .calc-btn-number,
 .calc-btn-operation {
   background-color: var(--bg-number-keys);
-  color: var(--color-number-key);
   box-shadow: 1px 1px 2px var(--shadow-number-key);
+  color: var(--color-number-key);
 
   &:hover {
     background-color: var(--bg-number-keys-hover);
@@ -268,19 +252,18 @@ body {
 
 .calc-btn-result:disabled {
   background-color: var(--bg-result-hover);
-  transition: background-color .1s ease-in;
   cursor: not-allowed;
+  transition: background-color .1s ease-in;
 }
 
 #calc-footer {
-  position: relative;
-  display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 5px;
-
-  margin-top: 20px;
   color: var(--color-calc);
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  margin-top: 20px;
+  position: relative;
 }
 
 #calc-footer a {
@@ -292,36 +275,35 @@ body {
 }
 
 #calc-footer-link-msg {
-  position: absolute;
-  width: 150px;
   bottom: -65px;
-  transform: translateX(50%, 50%);
   opacity: 0;
+  position: absolute;
+  transform: translateX(50%, 50%);
   transform: translateY(-20px);
+  width: 150px;
 }
 
 #calc-footer-link-msg-body {
-  position: relative;
-  text-align: center;
-  line-height: 1.2rem;
   background-color: var(--bg-key-area);
-  padding: 5px;
   border-radius: 4px;
-
+  color: var(--color-calc);
   font-size: .90rem;
   font-weight: 600;
-  color: var(--color-calc);
+  line-height: 1.2rem;
+  padding: 5px;
+  position: relative;
+  text-align: center;
 }
 
 #calc-footer-link-msg-body::after {
-  position: absolute;
-  content: " ";
-  top: -10px;
-  right: 50%;
-  height: 10px;
-  width: 10%;
   background-color: var(--bg-key-area);
   clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  content: " ";
+  height: 10px;
+  position: absolute;
+  right: 50%;
+  top: -10px;
+  width: 10%;
 }
 
 @keyframes slide-when-is-showed {
