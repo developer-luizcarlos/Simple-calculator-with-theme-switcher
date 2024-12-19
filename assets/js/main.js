@@ -1,5 +1,4 @@
 "use strict";
-
 // Global variables and startup configurations
 let allowSpecialKeysOnCalcScreen = true;
 
@@ -17,13 +16,11 @@ const calcButtonDelete = document.querySelector(".calc-btn-delete");
 const calcButtonReset = document.querySelector(".calc-btn-reset");
 
 // Functions
-function changeBodyClass(nameClass) {
-  const body = document.body;
+const changeBodyClass = (nameClass) => {
+  document.body.setAttribute("class", nameClass);
+};
 
-  body.setAttribute("class", nameClass);
-}
-
-function addNumberValuesToScreen(value) {
+const addNumberValuesToScreen = (value) => {
   let ScreenValue = calcScreen.textContent;
   let calcScreenInitialValue = Number(calcScreen.textContent);
 
@@ -31,35 +28,36 @@ function addNumberValuesToScreen(value) {
     calcScreenInitialValue === 0 ? value : ScreenValue + value;
   allowSpecialKeysOnCalcScreen = true;
   isBtnResultDisabled(false);
-}
+};
 
-function addSpecialCharsToScreen(value) {
+const addSpecialCharsToScreen = (value) => {
   if (allowSpecialKeysOnCalcScreen) {
     calcScreen.textContent =
       Number(calcScreen.textContent) === 0
         ? "0" + value
         : calcScreen.textContent + value;
+
     allowSpecialKeysOnCalcScreen = false;
     isBtnResultDisabled(true);
   }
-}
+};
 
-function isBtnResultDisabled(state) {
+const isBtnResultDisabled = (state) => {
   if (state) {
     calcButtonResult.setAttribute("disabled", "disabled");
   } else {
     calcButtonResult.removeAttribute("disabled", "disabled");
   }
-}
+};
 
-function calculateTheResult() {
+const calculateTheResult = () => {
   const convertedCalcScreenValue = Number(calcScreen.textContent);
 
   const expressionValidToCalc = convertedCalcScreenValue !== 0;
 
   if (expressionValidToCalc) {
     const result = eval(calcScreen.textContent);
-    const resultIsNan = isNaN(result);
+    const resultIsNan = isNaN(result) || !Number.isFinite(result);
 
     if (resultIsNan) {
       calcScreen.textContent = "0";
@@ -69,67 +67,50 @@ function calculateTheResult() {
       calcScreen.textContent = result;
     }
   }
-}
+};
 
-function deleteValueFromCalcScreen() {
-  let currentScreenValue = calcScreen.textContent;
-  let slicedScreenValue = currentScreenValue.slice(
+const deleteValueFromCalcScreen = () => {
+  let slicedScreenValue = calcScreen.textContent.slice(
     0,
-    currentScreenValue.length - 1
+    calcScreen.textContent.length - 1
   );
 
   let lastChar = slicedScreenValue.at(slicedScreenValue.length - 1);
-  let lastCharIsSpecialChar = !isNaN(Number(lastChar));
+  let lastCharIsNotSpecialChar = !isNaN(Number(lastChar));
 
-  if (slicedScreenValue.length > 0) {
-    calcScreen.textContent = slicedScreenValue;
-    if (lastCharIsSpecialChar) {
-      allowSpecialKeysOnCalcScreen = true;
-      isBtnResultDisabled(false);
-    } else {
-      allowSpecialKeysOnCalcScreen = false;
-    }
-  } else {
-    calcScreen.textContent = "0";
-    allowSpecialKeysOnCalcScreen = true;
+  if (lastCharIsNotSpecialChar) {
+    isBtnResultDisabled(false);
   }
-  calcScreen.textContent =
-    slicedScreenValue.length > 0 ? slicedScreenValue : "0";
-}
 
-function resetCalcScreenValues() {
+  allowSpecialKeysOnCalcScreen =
+    lastCharIsNotSpecialChar || Number(calcScreen.textContent) == "0"
+      ? true
+      : false;
+
+  calcScreen.textContent = slicedScreenValue.length ? slicedScreenValue : "0";
+};
+
+const resetCalcScreenValues = () => {
   calcScreen.textContent = "0";
   allowSpecialKeysOnCalcScreen = true;
   isBtnResultDisabled(false);
-}
+};
 
-radiosToggleTheme.map((radio) => {
+// Function implementations
+
+radiosToggleTheme.forEach((radio, index) => {
   radio.addEventListener("click", () => {
-    let radioID = radio.id;
-
-    switch (radioID) {
-      case "radio-theme1":
-        changeBodyClass("theme1");
-        break;
-      case "radio-theme2":
-        changeBodyClass("theme2");
-        break;
-      case "radio-theme3":
-        changeBodyClass("theme3");
-        break;
-    }
+    changeBodyClass(`theme${index + 1}`);
   });
 });
 
-// Other functionalities
-
-btnNumberKeys.map((numberKey) => {
+btnNumberKeys.forEach((numberKey) => {
   numberKey.addEventListener("click", () =>
     addNumberValuesToScreen(numberKey.value)
   );
 });
 
-btnOperationalKeys.map((operationKey) => {
+btnOperationalKeys.forEach((operationKey) => {
   operationKey.addEventListener("click", () => {
     addSpecialCharsToScreen(operationKey.value);
   });
